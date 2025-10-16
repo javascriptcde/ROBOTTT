@@ -71,7 +71,8 @@ void autonomous(void) {
   collect_motor.setVelocity(70, percent);
   collect_motor.spin(forward);
   not_lucas.driveFor(forward, 17, inches);
-  wait(1, seconds);
+  not_lucas.stop();
+  wait(2, seconds);
   not_lucas.turnFor(right, 15, degrees);
   wait(20, msec);
   not_lucas.driveFor(forward, 20, inches);
