@@ -33,7 +33,7 @@ smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320,
 motor collect_motor = motor(PORT8, true);
 motor outtake_motor = motor(PORT9, false);
 brain tiya;
-controller tiya = controller();
+controller tiya_2 = controller();
 
 
 
@@ -169,8 +169,8 @@ void slow_outtake() {
 }
 
 void drive_robot() {
-      int leftSpeed = lucas.Axis3.position(percent);
-      int rightSpeed = lucas.Axis2.position(percent);
+      int leftSpeed = tiya_2.Axis3.position(percent);
+      int rightSpeed = tiya_2.Axis2.position(percent);
 
       // right motors default reverse
       left_front.spin(fwd, leftSpeed, percent);
@@ -184,19 +184,19 @@ void drive_robot() {
 void usercontrol(void) {
   // User control code here, inside the loop
   while (1) {
-    if (lucas.ButtonL2.pressing()) {
+    if (tiya_2.ButtonL2.pressing()) {
       collect_outtake_button();
       drive_robot();
-    } else if (lucas.ButtonL1.pressing()) {
+    } else if (tiya_2.ButtonL1.pressing()) {
       collect_reverse_button();
       drive_robot();
-    } else if (lucas.ButtonR1.pressing()) {
+    } else if (tiya_2.ButtonR1.pressing()) {
       collect_only_reverse_button();
       drive_robot();
-    } else if (lucas.ButtonR2.pressing()) {
+    } else if (tiya_2.ButtonR2.pressing()) {
       collect_only_button();
       drive_robot();
-    } else if (lucas.ButtonA.pressing()) {
+    } else if (tiya_2.ButtonA.pressing()) {
       slow_outtake();
       drive_robot();
     } else {
