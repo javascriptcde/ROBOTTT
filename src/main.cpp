@@ -29,7 +29,7 @@ motor right_middle = motor(PORT5, false);
 motor right_back = motor(PORT6, false);
 motor_group right_thomas = motor_group(right_front, right_middle, right_back);
 inertial thomas = inertial(PORT10);
-smartdrive unreasonable_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320, 40, mm, 1);
+smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320, 40, mm, 1);
 motor collect_motor = motor(PORT8, true);
 motor outtake_motor = motor(PORT9, false);
 brain tiya;
@@ -65,20 +65,20 @@ void pre_auton(void) {
 
 void autonomous(void) {
   thomas.calibrate();
-  unreasonable_lucas.setTurnVelocity(25, percent);
-  unreasonable_lucas.turnFor(left, 11, degrees);
-  unreasonable_lucas.setDriveVelocity(100, percent);
+  not_lucas.setTurnVelocity(25, percent);
+  not_lucas.turnFor(left, 11, degrees);
+  not_lucas.setDriveVelocity(100, percent);
   collect_motor.setVelocity(70, percent);
   collect_motor.spin(forward);
-  unreasonable_lucas.driveFor(forward, 17, inches);
+  not_lucas.driveFor(forward, 17, inches);
   wait(1, seconds);
-  unreasonable_lucas.turnFor(right, 15, degrees);
+  not_lucas.turnFor(right, 15, degrees);
   wait(20, msec);
-  unreasonable_lucas.driveFor(forward, 20, inches);
+  not_lucas.driveFor(forward, 20, inches);
   outtake_motor.stop();
   collect_motor.stop();
-  unreasonable_lucas.turnFor(right, 135, degrees);
-  unreasonable_lucas.driveFor(forward, 5, inches);
+  not_lucas.turnFor(right, 135, degrees);
+  not_lucas.driveFor(forward, 5, inches);
   collect_motor.spin(reverse); 
 }
 
