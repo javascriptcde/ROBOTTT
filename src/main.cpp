@@ -3,8 +3,6 @@
 /*    Module:       main.cpp                                                  */
 /*    Author:       tling                                                     */
 /*                                                                            */
-/*    Thomas is a great coder; Lucas is a bad builder; Tiya is a good driver. */
-/*                                                                            */
 /*    Don't forget to add nuts to top of intake so it stops shaking.          */
 /*    Make the rubber bands lower so the ball stops getting stuck.            */
 /*    If you make the turn velocity higher in autonomous, it won't turn       */
