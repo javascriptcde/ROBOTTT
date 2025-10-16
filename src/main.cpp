@@ -33,7 +33,7 @@ smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320,
 motor collect_motor = motor(PORT8, true);
 motor outtake_motor = motor(PORT9, false);
 brain tiya;
-controller lucas = controller();
+controller tiya = controller();
 
 
 
