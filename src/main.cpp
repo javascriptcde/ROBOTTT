@@ -66,7 +66,7 @@ void autonomous_right() {
   thomas.calibrate();
   not_lucas.setTurnVelocity(25, percent);
   collect_motor.setVelocity(80, percent);
-  not_lucas.turnFor(left, 11, degrees);
+  not_lucas.turnFor(left, -11, degrees);
   collect_motor.spin(forward);
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
@@ -75,14 +75,7 @@ void autonomous_right() {
   left_thomas.stop();
   tiya_2.rumble("....");
   wait(1, seconds);
-  not_lucas.turnFor(right, 90, degrees);
-  collect_motor.stop();
-  left_thomas.spin(fwd, 50, percent);
-  right_thomas.spin(fwd, 50, percent);
-  wait(750, msec);
-  right_thomas.stop();
-  left_thomas.stop();
-  not_lucas.turnFor(right, 130, degrees);
+  not_lucas.turnFor(right, -54.3, degrees);
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
   wait(320, msec);
