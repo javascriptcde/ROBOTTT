@@ -75,7 +75,7 @@ void autonomous_right() {
   left_thomas.stop();
   tiya_2.rumble("....");
   wait(1, seconds);
-  not_lucas.turnFor(right, -54.3, degrees);
+  not_lucas.turnFor(right, -54, degrees);
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
   wait(400, msec);
