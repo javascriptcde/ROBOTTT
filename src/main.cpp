@@ -103,7 +103,7 @@ void autonomous_left() {
   tiya_2.rumble("....");
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
-  wait(1700, msec);
+  wait(1850, msec);
   right_thomas.stop();
   left_thomas.stop();
   not_lucas.turnFor(left, 125, degrees);
