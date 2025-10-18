@@ -3,7 +3,6 @@
 /*    Module:       main.cpp                                                  */
 /*    Author:       tling                                                     */
 /*                                                                            */
-/*    Don't forget to add nuts to top of intake so it stops shaking.          */
 /*    Make the rubber bands lower so the ball stops getting stuck.            */
 /*    If you make the turn velocity higher in autonomous, it won't turn       */
 /*    accuratly.                                                              */
@@ -63,24 +62,68 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void autonomous(void) {
+void autonomous_right() {
+  thomas.calibrate();
+  not_lucas.setTurnVelocity(25, percent);
+  collect_motor.setVelocity(80, percent);
+  not_lucas.turnFor(left, 11, degrees);
+  collect_motor.spin(forward);
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(700, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  tiya_2.rumble("....");
+  wait(1, seconds);
+  not_lucas.turnFor(right, 90, degrees);
+  collect_motor.stop();
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(750, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  not_lucas.turnFor(right, 130, degrees);
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(320, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  collect_motor.spin(reverse); 
+}
+
+void autonomous_left() {
   thomas.calibrate();
   not_lucas.setTurnVelocity(25, percent);
   not_lucas.turnFor(left, 11, degrees);
-  not_lucas.setDriveVelocity(100, percent);
-  collect_motor.setVelocity(70, percent);
+  tiya_2.rumble("....");
+  collect_motor.setVelocity(80, percent);
   collect_motor.spin(forward);
-  not_lucas.driveFor(forward, 17, inches);
-  not_lucas.stop();
-  wait(2, seconds);
-  not_lucas.turnFor(right, 15, degrees);
-  wait(20, msec);
-  not_lucas.driveFor(forward, 20, inches);
-  outtake_motor.stop();
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(700, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  tiya_2.rumble("....");
+  wait(1, seconds);
+  not_lucas.turnFor(right, 100, degrees);
   collect_motor.stop();
-  not_lucas.turnFor(right, 135, degrees);
-  not_lucas.driveFor(forward, 5, inches);
+  tiya_2.rumble("....");
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(1700, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  not_lucas.turnFor(left, 125, degrees);
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(320, msec);
+  right_thomas.stop();
+  left_thomas.stop();
   collect_motor.spin(reverse); 
+}
+
+void autonomous(void) {
+ autonomous_right();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -93,50 +136,30 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 void backup_auto () {
-  wait(0.1, seconds);
-  collect_motor.setVelocity(200, percent);
-  outtake_motor.setVelocity(200, percent);
-  left_front.setVelocity(80, percent);
-  left_middle.setVelocity(80, percent);
-  left_back.setVelocity(80, percent);
-  right_front.setVelocity(80, percent);
-  right_middle.setVelocity(80, percent);
-  right_back.setVelocity(80, percent);
-
+  thomas.calibrate();
+  not_lucas.setTurnVelocity(25, percent);
+  not_lucas.turnFor(left, 11, degrees);
+  tiya_2.rumble("....");
+  collect_motor.setVelocity(80, percent);
   collect_motor.spin(forward);
-  outtake_motor.spin(forward);
-  left_front.spin(forward);
-  left_middle.spin(forward);
-  left_back.spin(forward);
-  right_front.spin(forward);
-  right_middle.spin(forward);
-  right_back.spin(forward);
-  wait(1.2, seconds);
-
-  left_front.stop();
-  left_middle.stop();
-  left_back.stop();
-  right_front.stop();
-  right_middle.stop();
-  right_back.stop();
-  wait(0.1, seconds);
-
-  left_front.spin(forward);
-  left_middle.spin(forward);
-  left_back.spin(forward);
-  right_front.spin(reverse);
-  right_middle.spin(reverse);
-  right_back.spin(reverse);
-  wait(0.3, seconds);
-
-  left_front.stop();
-  left_middle.stop();
-  left_back.stop();
-  right_front.stop();
-  right_middle.stop();
-  right_back.stop();
-
-
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(700, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  tiya_2.rumble("....");
+  not_lucas.turnFor(right, 97, degrees);
+  collect_motor.stop();
+  tiya_2.rumble("....");
+  wait(0.5, seconds);
+  not_lucas.stop();
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(1600, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  not_lucas.turnFor(left, 135, degrees);
+  collect_motor.spin(reverse); 
 }
 
 void collect_outtake_button() {
@@ -181,6 +204,11 @@ void drive_robot() {
       right_back.spin(fwd, rightSpeed, percent);
 }
 
+void align_button () {
+  not_lucas.setDriveVelocity(50, percent);
+  not_lucas.driveFor(forward, 1.5, inches);
+}
+
 void usercontrol(void) {
   // User control code here, inside the loop
   while (1) {
@@ -199,6 +227,8 @@ void usercontrol(void) {
     } else if (tiya_2.ButtonA.pressing()) {
       slow_outtake();
       drive_robot();
+    } else if (tiya_2.ButtonX.pressing()) {
+      align_button();
     } else {
       outtake_motor.stop();
       collect_motor.stop();
