@@ -30,7 +30,7 @@ motor_group right_thomas = motor_group(right_front, right_middle, right_back);
 inertial thomas = inertial(PORT10);
 smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320, 40, mm, 1);
 motor collect_motor = motor(PORT8, true);
-motor outtake_motor = motor(PORT9, false);
+motor outtake_motor = motor(PORT9, true);
 brain tiya;
 controller tiya_2 = controller();
 
@@ -199,7 +199,7 @@ void drive_robot() {
 
 void align_button () {
   not_lucas.setDriveVelocity(50, percent);
-  not_lucas.driveFor(forward, 1.5, inches);
+  not_lucas.driveFor(forward, 0.4, inches);
 }
 
 void usercontrol(void) {
