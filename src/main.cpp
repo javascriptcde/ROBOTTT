@@ -70,7 +70,7 @@ void autonomous_right() {
   collect_motor.spin(forward);
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
-  wait(1018, msec);
+  wait(1130, msec);
   right_thomas.stop();
   left_thomas.stop();
   tiya_2.rumble("....");
