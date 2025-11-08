@@ -29,7 +29,7 @@ motor right_back = motor(PORT6, false);
 motor_group right_thomas = motor_group(right_front, right_middle, right_back);
 inertial thomas = inertial(PORT10);
 smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320, 40, mm, 1);
-motor collect_motor = motor(PORT8, true);
+motor collect_motor = motor(PORT8, false);
 motor outtake_motor = motor(PORT9, true);
 brain tiya;
 controller tiya_2 = controller();
@@ -70,7 +70,7 @@ void autonomous_right() {
   collect_motor.spin(forward);
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
-  wait(700, msec);
+  wait(1018, msec);
   right_thomas.stop();
   left_thomas.stop();
   tiya_2.rumble("....");
@@ -78,7 +78,7 @@ void autonomous_right() {
   not_lucas.turnFor(right, -54, degrees);
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
-  wait(400, msec);
+  wait(500, msec);
   right_thomas.stop();
   left_thomas.stop();
   collect_motor.spin(reverse); 
@@ -109,14 +109,19 @@ void autonomous_left() {
   not_lucas.turnFor(left, 125, degrees);
   left_thomas.spin(fwd, 50, percent);
   right_thomas.spin(fwd, 50, percent);
-  wait(320, msec);
+  wait(500, msec);
   right_thomas.stop();
   left_thomas.stop();
   collect_motor.spin(reverse); 
 }
 
+void side_auton() {
+  thomas.calibrate();
+  not_lucas.driveFor(forward, 8, inches);
+}
+
 void autonomous(void) {
-  autonomous_left();
+  autonomous_right();
 }
 
 /*---------------------------------------------------------------------------*/
