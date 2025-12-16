@@ -20,13 +20,11 @@ using namespace vex;
 competition Competition;
 
 motor left_front = motor(PORT1, true);
-motor left_middle = motor(PORT2, true);
 motor left_back = motor(PORT3, true);
-motor_group left_thomas = motor_group(left_front, left_middle, left_back);
+motor_group left_thomas = motor_group(left_front, left_back);
 motor right_front = motor(PORT4, false);
-motor right_middle = motor(PORT5, false);
 motor right_back = motor(PORT6, false);
-motor_group right_thomas = motor_group(right_front, right_middle, right_back);
+motor_group right_thomas = motor_group(right_front, right_back);
 inertial thomas = inertial(PORT10);
 smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320, 40, mm, 1);
 motor collect_motor = motor(PORT8, false);
@@ -195,17 +193,11 @@ void drive_robot() {
 
       // right motors default reverse
       left_front.spin(fwd, leftSpeed, percent);
-      left_middle.spin(fwd, leftSpeed, percent);
       left_back.spin(fwd, leftSpeed, percent);
       right_front.spin(fwd, rightSpeed, percent); 
-      right_middle.spin(fwd, rightSpeed, percent);
       right_back.spin(fwd, rightSpeed, percent);
 }
 
-void align_button () {
-  not_lucas.setDriveVelocity(50, percent);
-  not_lucas.driveFor(forward, 0.4, inches);
-}
 
 void usercontrol(void) {
   // User control code here, inside the loop
@@ -225,8 +217,6 @@ void usercontrol(void) {
     } else if (tiya_2.ButtonA.pressing()) {
       slow_outtake();
       drive_robot();
-    } else if (tiya_2.ButtonX.pressing()) {
-      align_button();
     } else {
       outtake_motor.stop();
       collect_motor.stop();
