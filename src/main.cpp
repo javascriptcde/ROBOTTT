@@ -19,19 +19,21 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
-motor left_front = motor(PORT1, true);
-motor left_back = motor(PORT3, true);
+motor left_front = motor(PORT10, true);
+motor left_back = motor(PORT8, true);
 motor_group left_thomas = motor_group(left_front, left_back);
-motor right_front = motor(PORT4, false);
-motor right_back = motor(PORT6, false);
+motor right_front = motor(PORT5, false);
+motor right_back = motor(PORT4, false);
 motor_group right_thomas = motor_group(right_front, right_back);
-inertial thomas = inertial(PORT10);
+inertial thomas = inertial(PORT9);
 smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320, 40, mm, 1);
-motor collect_motor = motor(PORT8, false);
-motor outtake_motor = motor(PORT9, true);
+motor collect_motor = motor(PORT3, true);
+motor outtake_right = motor(PORT7, true);
+motor outtake_left = motor(PORT6, false);
+motor_group outtake_motor = motor_group(outtake_right, outtake_left);
 brain tiya;
 controller tiya_2 = controller();
-
+drivetrain not_lucas_2= drivetrain(left_thomas, right_thomas, 259.34, 320, 40, mm, 1);
 
 
 /*---------------------------------------------------------------------------*/
