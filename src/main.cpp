@@ -65,7 +65,7 @@ void pre_auton(void) {
 void autonomous_right() {
     thomas.calibrate();
   not_lucas.setTurnVelocity(25, percent);
-  not_lucas.turnFor(left, 11, degrees);
+  not_lucas.turnFor(right, 11, degrees);
   collect_motor.setVelocity(80, percent);
   collect_motor.spin(forward);
   left_thomas.spin(fwd, 70, percent);
@@ -78,7 +78,7 @@ void autonomous_right() {
   collect_motor.stop();
   left_thomas.spin(fwd, 70, percent);
   right_thomas.spin(fwd, 70, percent);
-  wait(1830, msec);
+  wait(2330, msec);
   right_thomas.stop();
   left_thomas.stop();
   not_lucas.turnFor(right, 30, degrees);
@@ -107,7 +107,7 @@ void autonomous_left() {
   collect_motor.stop();
   left_thomas.spin(fwd, 70, percent);
   right_thomas.spin(fwd, 70, percent);
-  wait(1830, msec);
+  wait(2330, msec);
   right_thomas.stop();
   left_thomas.stop();
   not_lucas.turnFor(left, 30, degrees);
