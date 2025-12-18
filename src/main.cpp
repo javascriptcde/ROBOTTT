@@ -63,56 +63,61 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous_right() {
-  thomas.calibrate();
+    thomas.calibrate();
   not_lucas.setTurnVelocity(25, percent);
+  not_lucas.turnFor(left, 11, degrees);
   collect_motor.setVelocity(80, percent);
-  not_lucas.turnFor(left, -11, degrees);
   collect_motor.spin(forward);
-  left_thomas.spin(fwd, 50, percent);
-  right_thomas.spin(fwd, 50, percent);
-  wait(1130, msec);
+  left_thomas.spin(fwd, 70, percent);
+  right_thomas.spin(fwd, 70, percent);
+  wait(700, msec);
   right_thomas.stop();
   left_thomas.stop();
-  tiya_2.rumble("....");
   wait(1, seconds);
-  not_lucas.turnFor(right, -54, degrees);
-  left_thomas.spin(fwd, 50, percent);
-  right_thomas.spin(fwd, 50, percent);
-  wait(500, msec);
+  not_lucas.turnFor(right, 150, degrees);
+  collect_motor.stop();
+  left_thomas.spin(fwd, 70, percent);
+  right_thomas.spin(fwd, 70, percent);
+  wait(1830, msec);
   right_thomas.stop();
   left_thomas.stop();
-  collect_motor.spin(reverse); 
+  not_lucas.turnFor(right, 30, degrees);
+  left_thomas.spin(reverse, 70, percent);
+  right_thomas.spin(reverse, 70, percent);
+  wait(300, msec);
+  right_thomas.stop();
+  left_thomas.stop();
+  collect_motor.spin(forward, 80, percent);
+  outtake_motor.spin(forward, 70, percent);
 }
 
 void autonomous_left() {
   thomas.calibrate();
   not_lucas.setTurnVelocity(25, percent);
   not_lucas.turnFor(left, 11, degrees);
-  tiya_2.rumble("....");
   collect_motor.setVelocity(80, percent);
   collect_motor.spin(forward);
-  left_thomas.spin(fwd, 50, percent);
-  right_thomas.spin(fwd, 50, percent);
+  left_thomas.spin(fwd, 70, percent);
+  right_thomas.spin(fwd, 70, percent);
   wait(700, msec);
   right_thomas.stop();
   left_thomas.stop();
-  tiya_2.rumble("....");
   wait(1, seconds);
-  not_lucas.turnFor(right, 100, degrees);
+  not_lucas.turnFor(left, 150, degrees);
   collect_motor.stop();
-  tiya_2.rumble("....");
-  left_thomas.spin(fwd, 50, percent);
-  right_thomas.spin(fwd, 50, percent);
+  left_thomas.spin(fwd, 70, percent);
+  right_thomas.spin(fwd, 70, percent);
   wait(1830, msec);
   right_thomas.stop();
   left_thomas.stop();
-  not_lucas.turnFor(left, 125, degrees);
-  left_thomas.spin(fwd, 50, percent);
-  right_thomas.spin(fwd, 50, percent);
-  wait(500, msec);
+  not_lucas.turnFor(left, 30, degrees);
+  left_thomas.spin(reverse, 70, percent);
+  right_thomas.spin(reverse, 70, percent);
+  wait(300, msec);
   right_thomas.stop();
   left_thomas.stop();
-  collect_motor.spin(reverse); 
+  collect_motor.spin(forward, 80, percent);
+  outtake_motor.spin(forward, 70, percent); 
 }
 
 void side_auton() {
