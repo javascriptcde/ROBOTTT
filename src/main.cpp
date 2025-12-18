@@ -133,7 +133,7 @@ void autonomous(void) {
 /*                                                                           */
 /*                              User Control Task                            */
 /*                                                                           */
-/*  This task is u\sed to control your robot during the user control phase of */
+/*  This task is used to control your robot during the user control phase of */
 /*  a VEX Competition.                                                       */
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
