@@ -28,7 +28,7 @@ motor_group right_thomas = motor_group(right_front, right_back);
 inertial thomas = inertial(PORT9);
 smartdrive not_lucas= smartdrive(left_thomas, right_thomas, thomas, 259.34, 320, 40, mm, 1);
 motor collect_motor_1 = motor(PORT3, false);
-motor collect_motor_2 = motor(PORT1, true);
+motor collect_motor_2 = motor(PORT1, false);
 motor_group collect_motor = motor_group(collect_motor_1, collect_motor_2);
 motor outtake_right = motor(PORT7, false);
 motor outtake_left = motor(PORT6, true);
@@ -65,10 +65,14 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous_right() {
+      digital_out Test_1(tiya.ThreeWirePort.A);
+      digital_out Test_2(tiya.ThreeWirePort.C);
+
     thomas.calibrate();
   not_lucas.setTurnVelocity(25, percent);
   not_lucas.turnFor(right, 11, degrees);
   collect_motor.setVelocity(80, percent);
+  Test_2.set(!Test_2.value());
   collect_motor.spin(forward);
   left_thomas.spin(fwd, 70, percent);
   right_thomas.spin(fwd, 70, percent);
@@ -84,21 +88,27 @@ void autonomous_right() {
   wait(530, msec);
   right_thomas.stop();
   left_thomas.stop();
-  not_lucas.turnFor(right, 32, degrees);
+  wait(750, msec);
+  not_lucas.turnFor(right, 21, degrees);
   left_thomas.spin(reverse, 70, percent);
   right_thomas.spin(reverse, 70, percent);
-  wait(700, msec);
+  wait(920, msec);
   right_thomas.stop();
   left_thomas.stop();
+  Test_2.set(!Test_2.value());
   collect_motor.spin(forward, 80, percent);
   outtake_motor.spin(forward, 70, percent);
 }
 
 void autonomous_left() {
+      digital_out Test_1(tiya.ThreeWirePort.A);
+      digital_out Test_2(tiya.ThreeWirePort.C);
+
   thomas.calibrate();
   not_lucas.setTurnVelocity(25, percent);
   not_lucas.turnFor(left, 11, degrees);
   collect_motor.setVelocity(80, percent);
+  Test_2.set(!Test_2.value());
   collect_motor.spin(forward);
   left_thomas.spin(fwd, 70, percent);
   right_thomas.spin(fwd, 70, percent);
@@ -114,23 +124,25 @@ void autonomous_left() {
   wait(530, msec);
   right_thomas.stop();
   left_thomas.stop();
-  not_lucas.turnFor(left, 32, degrees);
+  wait(750, msec);
+  not_lucas.turnFor(left, 21, degrees);
   left_thomas.spin(reverse, 70, percent);
   right_thomas.spin(reverse, 70, percent);
-  wait(700, msec);
+  wait(920, msec);
   right_thomas.stop();
   left_thomas.stop();
+  Test_2.set(!Test_2.value());
   collect_motor.spin(forward, 80, percent);
   outtake_motor.spin(forward, 70, percent); 
 }
 
-void side_auton() {
+void autonomous_f() {
   thomas.calibrate();
   not_lucas.driveFor(forward, 8, inches);
 }
 
 void autonomous(void) {
-  autonomous_right();
+  autonomous_left();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -205,6 +217,7 @@ void drive_robot() {
       left_back.spin(fwd, leftSpeed, percent);
       right_front.spin(fwd, rightSpeed, percent); 
       right_back.spin(fwd, rightSpeed, percent);
+
 }
 
 
@@ -231,6 +244,18 @@ void usercontrol(void) {
       collect_motor.stop();
       drive_robot();
 
+      digital_out Test_1(tiya.ThreeWirePort.A);
+      digital_out Test_2(tiya.ThreeWirePort.C);
+
+      // Then for the controller
+
+      if(tiya_2.ButtonX.PRESSED){
+         Test_1.set(!Test_1.value());
+      } if(tiya_2.ButtonB.PRESSED){
+          Test_2.set(!Test_2.value());
+      }
+
+
     }
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
@@ -253,3 +278,4 @@ int main() {
     wait(100, msec);
   }
 }
+
