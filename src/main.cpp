@@ -74,13 +74,13 @@ void autonomous_right() {
   collect_motor.setVelocity(80, percent);
   Test_2.set(!Test_2.value());
   collect_motor.spin(forward);
-  left_thomas.spin(fwd, 70, percent);
-  right_thomas.spin(fwd, 70, percent);
-  wait(700, msec);
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(900, msec);
   right_thomas.stop();
   left_thomas.stop();
   wait(1, seconds);
-  not_lucas.turnFor(right, 128, degrees);
+  not_lucas.turnFor(right, 130, degrees);
   left_thomas.spin(fwd, 70, percent);
   right_thomas.spin(fwd, 70, percent);
   wait(700, msec);
@@ -89,15 +89,15 @@ void autonomous_right() {
   right_thomas.stop();
   left_thomas.stop();
   wait(750, msec);
-  not_lucas.turnFor(right, 21, degrees);
+  not_lucas.turnFor(right, 31, degrees);
   left_thomas.spin(reverse, 70, percent);
   right_thomas.spin(reverse, 70, percent);
   wait(920, msec);
   right_thomas.stop();
   left_thomas.stop();
   Test_2.set(!Test_2.value());
-  collect_motor.spin(forward, 80, percent);
-  outtake_motor.spin(forward, 70, percent);
+  collect_motor.spin(forward, 100, percent);
+  outtake_motor.spin(forward, 100, percent);
 }
 
 void autonomous_left() {
@@ -110,13 +110,13 @@ void autonomous_left() {
   collect_motor.setVelocity(80, percent);
   Test_2.set(!Test_2.value());
   collect_motor.spin(forward);
-  left_thomas.spin(fwd, 70, percent);
-  right_thomas.spin(fwd, 70, percent);
-  wait(700, msec);
+  left_thomas.spin(fwd, 50, percent);
+  right_thomas.spin(fwd, 50, percent);
+  wait(900, msec);
   right_thomas.stop();
   left_thomas.stop();
   wait(1, seconds);
-  not_lucas.turnFor(left, 128, degrees);
+  not_lucas.turnFor(left, 130, degrees);
   left_thomas.spin(fwd, 70, percent);
   right_thomas.spin(fwd, 70, percent);
   wait(700, msec);
@@ -125,15 +125,15 @@ void autonomous_left() {
   right_thomas.stop();
   left_thomas.stop();
   wait(750, msec);
-  not_lucas.turnFor(left, 21, degrees);
+  not_lucas.turnFor(left, 31, degrees);
   left_thomas.spin(reverse, 70, percent);
   right_thomas.spin(reverse, 70, percent);
   wait(920, msec);
   right_thomas.stop();
   left_thomas.stop();
   Test_2.set(!Test_2.value());
-  collect_motor.spin(forward, 80, percent);
-  outtake_motor.spin(forward, 70, percent); 
+  collect_motor.spin(forward, 100, percent);
+  outtake_motor.spin(forward, 100, percent); 
 }
 
 void autonomous_f() {
