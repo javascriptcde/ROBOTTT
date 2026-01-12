@@ -69,7 +69,7 @@ void autonomous_right() {
       digital_out Test_2(tiya.ThreeWirePort.C);
 
     thomas.calibrate();
-  not_lucas.setTurnVelocity(25, percent);
+  not_lucas.setTurnVelocity(31, percent);
   not_lucas.turnFor(right, 11, degrees);
   collect_motor.setVelocity(80, percent);
   Test_2.set(!Test_2.value());
@@ -85,11 +85,11 @@ void autonomous_right() {
   right_thomas.spin(fwd, 70, percent);
   collect_motor.stop();
   wait(700, msec);
-  wait(500, msec);
+  wait(270, msec);
   right_thomas.stop();
   left_thomas.stop();
   wait(750, msec);
-  not_lucas.turnFor(right, 31, degrees);
+  not_lucas.turnFor(right, 25, degrees);
   left_thomas.spin(reverse, 70, percent);
   right_thomas.spin(reverse, 70, percent);
   wait(920, msec);
@@ -121,7 +121,7 @@ void autonomous_left() {
   right_thomas.spin(fwd, 70, percent);
   collect_motor.stop();
   wait(700, msec);
-  wait(500, msec);
+  wait(270, msec);
   right_thomas.stop();
   left_thomas.stop();
   wait(750, msec);
