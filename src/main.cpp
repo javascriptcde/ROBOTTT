@@ -80,12 +80,12 @@ void autonomous_right() {
   right_thomas.stop();
   left_thomas.stop();
   wait(1, seconds);
-  not_lucas.turnFor(right, 130, degrees);
-  left_thomas.spin(fwd, 70, percent);
-  right_thomas.spin(fwd, 70, percent);
+  not_lucas.turnFor(left, 50, degrees);
+  left_thomas.spin(reverse, 70, percent);
+  right_thomas.spin(reverse, 70, percent);
   collect_motor.stop();
   wait(700, msec);
-  wait(270, msec);
+  wait(210, msec);
   right_thomas.stop();
   left_thomas.stop();
   wait(750, msec);
