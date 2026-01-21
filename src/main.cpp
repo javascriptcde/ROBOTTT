@@ -69,7 +69,7 @@ void autonomous_right() {
       digital_out Test_2(tiya.ThreeWirePort.C);
 
     thomas.calibrate();
-  not_lucas.setTurnVelocity(31, percent);
+  not_lucas.setTurnVelocity(20, percent);
   not_lucas.turnFor(right, 11, degrees);
   collect_motor.setVelocity(80, percent);
   Test_2.set(!Test_2.value());
@@ -80,16 +80,16 @@ void autonomous_right() {
   right_thomas.stop();
   left_thomas.stop();
   wait(1, seconds);
-  not_lucas.turnFor(left, 50, degrees);
-  left_thomas.spin(reverse, 70, percent);
-  right_thomas.spin(reverse, 70, percent);
+  not_lucas.turnFor(right, 120, degrees);
+  left_thomas.spin(forward, 70, percent);
+  right_thomas.spin(forward, 70, percent);
   collect_motor.stop();
   wait(700, msec);
   wait(210, msec);
   right_thomas.stop();
   left_thomas.stop();
   wait(750, msec);
-  not_lucas.turnFor(right, 25, degrees);
+  not_lucas.turnFor(right, 30, degrees);
   left_thomas.spin(reverse, 70, percent);
   right_thomas.spin(reverse, 70, percent);
   wait(920, msec);
@@ -105,7 +105,7 @@ void autonomous_left() {
       digital_out Test_2(tiya.ThreeWirePort.C);
 
   thomas.calibrate();
-  not_lucas.setTurnVelocity(15, percent);
+  not_lucas.setTurnVelocity(11, percent);
   not_lucas.turnFor(left, 11, degrees);
   collect_motor.setVelocity(80, percent);
   Test_2.set(!Test_2.value());
@@ -116,16 +116,16 @@ void autonomous_left() {
   right_thomas.stop();
   left_thomas.stop();
   wait(1, seconds);
-  not_lucas.turnFor(right, 50, degrees);
-  left_thomas.spin(reverse, 70, percent);
-  right_thomas.spin(reverse, 70, percent);
+  not_lucas.turnFor(left, 120, degrees);
+  left_thomas.spin(forward, 70, percent);
+  right_thomas.spin(forward, 70, percent);
   collect_motor.stop();
   wait(700, msec);
   wait(210, msec);
   right_thomas.stop();
   left_thomas.stop();
   wait(750, msec);
-  not_lucas.turnFor(left, 33.5, degrees);
+  not_lucas.turnFor(left, 30, degrees);
   left_thomas.spin(reverse, 70, percent);
   right_thomas.spin(reverse, 70, percent);
   wait(920, msec);
@@ -141,7 +141,7 @@ void autonomous_f() {
   not_lucas.driveFor(forward, 8, inches);
 }
 
-void park() {
+void autonomous_park() {
   left_thomas.spin(reverse, 50, percent);
   right_thomas.spin(reverse, 50, percent);
   wait(2.5, seconds);
@@ -150,7 +150,7 @@ void park() {
 }
 
 void autonomous(void) {
-  autonomous_left();
+  autonomous_park();
 }
 
 /*---------------------------------------------------------------------------*/
