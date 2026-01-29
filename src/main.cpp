@@ -142,9 +142,9 @@ void autonomous_f() {
 }
 
 void autonomous_park() {
-  left_thomas.spin(reverse, 50, percent);
-  right_thomas.spin(reverse, 50, percent);
-  wait(2.5, seconds);
+  left_thomas.spin(reverse, 25, percent);
+  right_thomas.spin(reverse, 25, percent);
+  wait(1.6, seconds);
   right_thomas.stop();
   left_thomas.stop();
 }
